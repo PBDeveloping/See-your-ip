@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IP Address Display Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #ip-address {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your IP Address:</h1>
+    <p id="ip-address">Loading...</p>
+
+    <script>
+        // Fetch the user's IP address using the ipify API
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                // Display the IP address on the webpage
+                document.getElementById('ip-address').innerText = data.ip;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('ip-address').innerText = 'Unable to retrieve IP address.';
+            });
+    </script>
+</body>
+</html>
